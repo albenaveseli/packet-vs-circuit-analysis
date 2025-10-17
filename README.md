@@ -104,7 +104,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e m
 | :--- | :--- | :--- |
 | **Numri Total ($N$)** | 50 | 5 herë më shumë përdorues se kapaciteti i CS (10) |
 | **Pritshmëria ($E[X]$)** | $50 \cdot 0.1 = 5$ | Mesatarisht 5 nga 10 vendet e kapacitetit përdoren |
-| **Prob. i Konjestionit** | 9.354602e-03 | Rreziku ≈0.00935 (rreth 9 në 1000 raste) |
+| **Prob. i mbingarkesës** | 9.354602e-03 | Rreziku ≈0.00935 (rreth 9 në 1000 raste) |
 
 **Analiza e Ndryshimeve (N=35 vs N=50):**  
 - **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shirat blu) zhvendoset djathtas, rreth $k=5$.  
@@ -190,6 +190,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
