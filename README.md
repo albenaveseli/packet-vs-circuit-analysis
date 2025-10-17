@@ -41,12 +41,6 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa rritet numri i përdoruesve ($N$) për pesë vlera të ndryshme të probabilitetit të aktivitetit ($p$).
 
-| Element | Përshkrimi | Kuptimi Inxhinierik |
-| :--- | :--- | :--- |
-| **Boshti X ($N$)** | Numri i përdoruesve totalë | Tregon sa përdorues përpiqen të jenë aktivë në rrjet |
-| **Boshti Y (Log Scale)** | Tail Probability $P(X>10)$ | Mat rrezikun e dështimit të QoS |
-| **$N$ 1–10** | $\mathbf{P(X>10)=0}$ | Përdoruesit aktivë nuk arrijnë pragun, sistemi i sigurt |
-
 ![Tail Probability vs N](outputs/tail_vs_n_log.png)
 
 **Analiza e Kurbave:**  
@@ -64,13 +58,6 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 Kjo figurë, e gjeneruar nga `plot_pmf_for_n(10)`, tregon PMF për $N=10$ përdorues totalë, që përputhet me kapacitetin e **Komutimit të Qarqeve (CS)**. Probabiliteti i konjestionit është teorikisht zero.
 
-| Element | Përshkrimi Akademik | Kuptimi në Figurë |
-| :--- | :--- | :--- |
-| **$N=10$** | Numri total i përdoruesve | Boshti X shkon deri në 10 |
-| **$p=0.100$** | Probabiliteti i aktivitetit të përdoruesit | Përdoret për të llogaritur çdo shirit blu |
-| **Threshold = 10** | Kapaciteti maksimal i përdoruesve aktivë | Vija e ndërprerë vertikale e zezë |
-| **Boshti Y** | Probabiliteti që saktësisht $k$ përdorues të jenë aktivë ($P(X=k)$) | Tregon lartësinë e çdo shiriti |
-
 ![PMF N=10](outputs/pmf_n_10.png)
 
 **Analiza:**  
@@ -83,10 +70,27 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(10)`, tregon PMF për $N=10$ përdo
 
 ---
 
-## PMF për N të ndryshme
+### Figura 3: $\mathbf{Binomial \text{ PMF } n=35, p=0.100 \text{ -- } P(X > 10) = 4.242976e-04}$
 
-- **N=35:** `outputs/pmf_n_35.png` — Bishti i kuq minimal, **P(X>10)=4.24e-4**  
+Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabilitetit të mbingarkesës kur rrjeti operon me 35 përdorues në Komutimin e Paketave (PS).
+
+| Element | Vlera | Konkluzioni |
+| :--- | :--- | :--- |
+| **Numri Total ($N$)** | 35 | Numri total i përdoruesve në PS |
+| **Probabiliteti ($p$)** | 0.100 | Probabiliteti që çdo përdorues është aktiv |
+| **Threshold** | 10 | Kapaciteti maksimal i përdoruesve aktivë |
+| **Probabiliteti i Konjestionit** | 4.242976e-04 | Konfirmon rrezikun shumë të ulët (≈0.0004) |
+
 ![PMF N=35](outputs/pmf_n_35.png)
+
+**Analiza:**  
+- **Pritshmëria ($E[X]$):** $E[X] = 35 \cdot 0.1 = 3.5$; shiritat blu tregojnë përdorim mesatar ~35% të kapacitetit.  
+- **Kufiri i Rrezikut:** Threshold = 10; shiritat e kuq pothuajse nuk duken, duke treguar probabilitet shumë të ulët të mbingarkesës.  
+- **Konkluzioni:** PS lejon 35 përdorues, 3.5 herë më shumë se CS, me probabilitet të pranueshëm të dështimit. Pikë optimale operative.
+
+---
+
+## PMF për N të tjera
 
 - **N=50:** `outputs/pmf_n_50.png` — P(X>10)=9.36e-3, rreziku rritet lehtësisht  
 ![PMF N=50](outputs/pmf_n_50.png)
