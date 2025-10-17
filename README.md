@@ -99,5 +99,7 @@ conclusions:
     rreziku rritet ndjeshëm. Verifikimi tregon se modeli binomial është i besueshëm (devijim <1%
     nga Monte Carlo). Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet
     e secilës paradigmë.
+  future_work:
+    - Integrimi i shpërndarjeve të tjera (Poisson)
     - Simulime në rrjete reale (p.sh., NS-3)
     - Mekanizma QoS dhe prioritizimi në rrjete me N të larta
