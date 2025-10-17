@@ -51,8 +51,8 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 **Analiza e formave të grafikëve:**  
 - **Rrezik i Lartë ($p=0.2, 0.3$):** Lakoret ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
-- **Rasti Tipik ($p=0.1$):** Lakorja e gjelbër rritet gradualisht; $\text{P}(X>10)$ kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, $\text{P} \approx 0.0004$ — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
-- **Rrezik Minimal ($p=0.01$):** Lakorja blu ngadalë; për $N=200$, P≈10⁻⁵. PS mund të mbajë shumë përdorues aktivë pa rrezik.
+- **Rasti Tipik ($p=0.1$):** Lakorja e portokallt rritet gradualisht; Për $N=35$, $\text{P} \approx 0.0004$ — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
+- **Rrezik Minimal ($p=0.05$):** Lakorja e kaltërt ngadalë. PS mund të mbajë shumë përdorues aktivë pa rrezik.
 
 > Ky grafik shërben si udhëzues për **planifikimin e kapacitetit**, duke treguar rrezikun për çdo $N$ dhe $p$.
 
@@ -85,14 +85,14 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 | **Numri Total ($N$)** | 35 | Numri total i përdoruesve në PS |
 | **Probabiliteti ($p$)** | 0.100 | Probabiliteti që çdo përdorues është aktiv |
 | **Threshold** | 10 | Kapaciteti maksimal i përdoruesve aktivë |
-| **Probabiliteti i Konjestionit** | 4.242976e-04 | Konfirmon rrezikun shumë të ulët (≈0.0004) |
+| **Probabiliteti i mbingarkesës** | 4.242976e-04 | Konfirmon rrezikun shumë të ulët (≈0.0004) |
 
 ![PMF N=35](outputs/pmf_n_35.png)
 
 **Analiza:**  
 - **Pritshmëria ($E[X]$):** $E[X] = 35 \cdot 0.1 = 3.5$; shiritat blu tregojnë përdorim mesatar ~35% të kapacitetit.  
 - **Kufiri i Rrezikut:** Threshold = 10; shiritat e kuq pothuajse nuk duken, duke treguar probabilitet shumë të ulët të mbingarkesës.  
-- **Konkluzioni:** PS lejon 35 përdorues, 3.5 herë më shumë se CS, me probabilitet të pranueshëm të dështimit. Pikë optimale operative.
+- **Konkluzioni:** PS lejon 35 përdorues, 3.5 herë më shumë se CS, me probabilitet të pranueshëm të dështimit. 
 
 ---
 
@@ -104,10 +104,10 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e m
 | :--- | :--- | :--- |
 | **Numri Total ($N$)** | 50 | 5 herë më shumë përdorues se kapaciteti i CS (10) |
 | **Pritshmëria ($E[X]$)** | $50 \cdot 0.1 = 5$ | Mesatarisht 5 nga 10 vendet e kapacitetit përdoren |
-| **Prob. i Konjestionit** | 9.354602e-03 | Rreziku ≈0.00935 (rreth 9 në 1000 raste) |
+| **Prob. i mbingarkesës** | 9.354602e-03 | Rreziku ≈0.00935 (rreth 9 në 1000 raste) |
 
 **Analiza e Ndryshimeve (N=35 vs N=50):**  
-- **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shirat blu) zhvendoset djathtas, rreth $k=5$.  
+- **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shiritat e kaltërt) zhvendoset djathtas, rreth $k=5$.  
 - **Rritja e Zonës së Kuqe:** Kufiri $k_{\text{threshold}}=10$ mbetet i njëjtë; shiritat e kuq tani janë qartë të dukshëm, duke treguar rrezik më të lartë.  
 - **Konkluzioni:** Rreziku i mbingarkesës është rritur 22 herë krahasuar me $N=35$, duke iu afruar kufirit të pranueshëm të shërbimit.
 
@@ -131,12 +131,12 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 | **Numri Total ($N$)** | 100 | 10 herë më shumë se kapaciteti i CS |
 | **Pritshmëria ($E[X]$)** | 100 * 0.1 = 10 | Mesatarja e përdoruesve aktivë përputhet me kapacitetin |
 | **Threshold** | 10 | Kapaciteti i lidhjes (vija e ndërprerë) |
-| **Prob. i Konjestionit** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
+| **Prob. i mbingarkesës** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
 
 **Analiza:**  
-- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa blu ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon mbingarkesën.  
+- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa e kaltërt ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon mbingarkesën.  
 - **Dështimi i QoS:** Pjesa e kuqe është e madhe dhe dominuese, rrjeti është pothuajse gjysmën e kohës i mbingarkuar.  
-- **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
+- **Përfundimi:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
 
 > Kjo figurë lidh vizualisht pikën e rrezikut të lartë në **Heatmap** dhe lakoren $p=0.1$ në grafikun logaritmik (Fig. 1).
 
@@ -148,18 +148,18 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 - **Interpretimi:** Zona blu: probabilitet i ulët, zona verdhë/gjelbër e hapur: probabilitet i lartë.  
 ![Heatmap](outputs/heatmap.png)
 
-**Analiza e Hartës së Nxehtësisë:**  
+**Analiza e Heatmap:**  
 - **Zona e Mbingarkesës së Lartë (E Verdhë):** Përdorues të shumtë dhe aktivitet i lartë, probabiliteti i mbingarkesës afër 1.0.  
 - **Zona e Mbingarkesës së Ulët (E Errët/Vjollcë):** Përdorues të pakët ose aktivitet i ulët, probabiliteti i mbingarkesës afër 0.  
-- **Zona e Tranzicionit (E Gjelbër/Blu):** Numri i përdoruesve i pranueshëm me probabilitet aktiviteti të ulët; p.sh., $p\approx0.1$ dhe $N=35$–$50$ përdorues, probabiliteti mbingarkesë i kontrolluar (<0.01).  
+- **Zona e Tranzicionit (E Gjelbër/E Kaltërt):** Numri i përdoruesve i pranueshëm me probabilitet aktiviteti të ulët; p.sh., $p\approx0.1$ dhe $N=35$–$50$ përdorues, probabiliteti mbingarkesë i kontrolluar (<0.01).  
 
-> Harta e nxehtësisë demonstron qartë **"fitimin"** e Paket-Switching mbi Circuit-Switching, duke ilustruar kapacitetin statistikisht të pranueshëm.
+> Heatmap demonstron qartë **"fitimin"** e Paket-Switching mbi Circuit-Switching, duke ilustruar kapacitetin statistikisht të pranueshëm.
 
 ---
 
 ## Tabela Verifikuese
 
-Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1:
+Krahasimi i rezultateve teorike, të simulimeve Monte Carlo dhe të përafërimit normal për N = [35, 50, 100] me p = 0.1.
 
 | N   | Theoretical | Monte Carlo | Normal Approx |
 |-----|------------|------------|---------------|
@@ -190,6 +190,16 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
+
+
+
+
+
+
+
+
+
 
 
 
