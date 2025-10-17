@@ -51,7 +51,7 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 **Analiza e Kurbave:**  
 - **Rrezik i Lartë ($p=0.2, 0.3$):** Kurbat ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
-- **Rasti Tipik ($p=0.1$):** Kurba portokalli rritet gradualisht; P(X>10) kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, P≈0.0004 — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
+- **Rasti Tipik ($p=0.05$):** Kurba portokalli rritet gradualisht; P(X>10) kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, P≈0.0004 — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
 - **Rrezik Minimal ($p=0.01$):** Vija blu ngadalë; për $N=200$, P≈10⁻⁵. PS mund të mbajë shumë përdorues aktivë pa rrezik.
 
 > Ky grafik shërben si udhëzues për **planifikimin e kapacitetit**, duke treguar rrezikun për çdo $N$ dhe $p$.
@@ -190,5 +190,6 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
