@@ -1,4 +1,3 @@
-
 import os
 import time
 import numpy as np
@@ -173,21 +172,56 @@ def main():
     df_all.to_csv(summary_csv, index=False)
     print(f"Saved table: {summary_csv}")
 
-    # 7) Create a simple PDF report with key figures (optional)
-    pdf_path = os.path.join(OUTPUT_DIR, "packet_vs_circuit_report_basic.pdf")
+    # 7) Create a detailed PDF report with captions below images
+    pdf_path = os.path.join(OUTPUT_DIR, "packet_vs_circuit_report_detailed.pdf")
     with PdfPages(pdf_path) as pdf:
-        # title page
+        # Title page
         plt.figure(figsize=(11,8.5)); plt.axis('off')
-        plt.text(0.5, 0.6, "Packet vs Circuit Switching\nAdvanced Analysis", ha='center', fontsize=20)
-        plt.text(0.5, 0.45, f"Threshold users = {THRESHOLD_USERS}, user rate {USER_RATE_MBPS} Mbps, link {LINK_CAPACITY_MBPS} Mbps\nDefault p = {DEFAULT_P}", ha='center')
+        plt.text(0.5, 0.6, "Advanced Analysis: Packet-Switching vs Circuit-Switching", ha='center', fontsize=22)
+        plt.text(0.5, 0.45, f"Threshold users = {THRESHOLD_USERS}, User rate = {USER_RATE_MBPS} Mbps, Link = {LINK_CAPACITY_MBPS} Mbps\nDefault activity probability p = {DEFAULT_P}", ha='center', fontsize=12)
         pdf.savefig(); plt.close()
-        # include saved PNGs
-        for fname in ["tail_vs_n_log.png","pmf_n_35.png","pmf_n_50.png","pmf_n_100.png","heatmap.png"]:
+
+        # List of figures with detailed captions
+        figures = [
+            ("tail_vs_n_log.png",
+             "Figura 1: Tail Probability vs N\n"
+             "- Për p=0.01: rrjeti shumë i sigurt, P(X>10) pothuajse 0.\n"
+             "- Për p=0.1: përdorim optimal, PS lejon 3.5 herë më shumë përdorues se CS me rrezik shumë të ulët.\n"
+             "- Për p=0.2/0.3: rrezik i lartë; sistemi mund të mbingarkohet shpejt."),
+            ("pmf_n_35.png",
+             "Figura 2: PMF për N=35, p=0.1\n"
+             "- P(X>10)=0.00042, probabilitet shumë i ulët për mbingarkesë.\n"
+             "- Shiritat blu tregojnë përdorim mesatar (E[X]=3.5).\n"
+             "- PS përdor rrjetin më efikas se CS, duke shmangur kapacitet të humbur."),
+            ("pmf_n_50.png",
+             "Figura 3: PMF për N=50, p=0.1\n"
+             "- Pritshmëria E[X]=5, pjesa blu tregon përdorim mesatar.\n"
+             "- P(X>10)=0.00935, rrezik i pranueshëm, por 22 herë më shumë se për N=35.\n"
+             "- PS ende ofron fitim kapaciteti, por monitorim i rrjetit i nevojshëm për QoS."),
+            ("pmf_n_100.png",
+             "Figura 4: PMF për N=100, p=0.1\n"
+             "- Pritshmëria E[X]=10 përputhet me kapacitetin.\n"
+             "- P(X>10)≈41.7%, rrjeti pothuajse gjysëm i mbingarkuar.\n"
+             "- PS nuk është më optimal, QoS ka dështuar në këtë skenar."),
+            ("heatmap.png",
+             "Figura 5: Heatmap e P(X>10) për N=1..200 dhe p=0.01..0.3\n"
+             "- Zona blu: probabilitet i ulët, rrjeti i sigurt.\n"
+             "- Zona verdhë/purpuri: probabilitet i lartë, rrezik mbingarkese.\n"
+             "- Zona e gjelbër/blu: fitimi i kapacitetit statistikisht i pranueshëm për PS mbi CS.")
+        ]
+
+        # Add each figure with caption below
+        for fname, caption in figures:
             path = os.path.join(OUTPUT_DIR, fname)
             if os.path.exists(path):
                 img = plt.imread(path)
-                plt.figure(figsize=(11,8.5)); plt.imshow(img); plt.axis('off'); pdf.savefig(); plt.close()
-    print(f"Saved basic PDF report: {pdf_path}")
+                plt.figure(figsize=(11,8.5))
+                plt.imshow(img)
+                plt.axis('off')
+                plt.text(0.5, -0.08, caption, ha='center', va='top', fontsize=10, wrap=True)
+                pdf.savefig(); plt.close()
+
+    print(f"Saved detailed PDF report with captions below images: {pdf_path}")
 
     end = time.time()
     print(f"Done in {end-start:.1f}s. Outputs in folder: {OUTPUT_DIR}")
