@@ -141,7 +141,7 @@ def main():
     print("Starting advanced analysis...")
 
     # 1) compute tails for default p and multiples
-    p_values = [0.01, 0.05, 0.1, 0.2, 0.3]
+    p_values = [0.05, 0.1, 0.2, 0.3, 0.4]
     results = varied_p_analysis(max_n=200, p_values=p_values)
 
     # 2) save multi-curve plot (log)
