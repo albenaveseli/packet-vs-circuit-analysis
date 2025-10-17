@@ -37,13 +37,9 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 ## Tail Probability vs N
 
-### Figura: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
+### Figura 1: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
 
 Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa rritet numri i përdoruesve ($N$) për pesë vlera të ndryshme të probabilitetit të aktivitetit ($p$).
-
----
-
-### 1. Kuptimi i Boshteve
 
 | Element | Përshkrimi | Kuptimi Inxhinierik |
 | :--- | :--- | :--- |
@@ -51,31 +47,43 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 | **Boshti Y (Log Scale)** | Tail Probability $P(X>10)$ | Mat rrezikun e dështimit të QoS |
 | **$N$ 1–10** | $\mathbf{P(X>10)=0}$ | Përdoruesit aktivë nuk arrijnë pragun, sistemi i sigurt |
 
----
+![Tail Probability vs N](outputs/tail_vs_n_log.png)
 
-### 2. Analiza e Kurbave
-
-* **Rrezik i Lartë ($p=0.2, 0.3$)**: Kurbat ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
-* **Rasti Tipik ($p=0.1$)**: Kurba portokalli rritet gradualisht; P(X>10) kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, P≈0.0004 — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
-* **Rrezik Minimal ($p=0.01$)**: Vija blu ngadalë; për $N=200$, P≈10⁻⁵. PS mund të mbajë shumë përdorues aktivë pa rrezik.
-
----
-
-### 3. Përfundimi
-
-1. **Rritja Eksponenciale e Rrezikut:** Çdo përdorues i ri shton një rrezik më të madh pas arritjes së mesatares $N \cdot p \approx 5$.  
-2. **Varësia nga Trafiku:** Suksesi i PS varet nga natyra e trafikut; përdoruesit duhet të qëndrojnë në zonën “blu/vjollcë” për të siguruar QoS.  
+**Analiza e Kurbave:**  
+- **Rrezik i Lartë ($p=0.2, 0.3$):** Kurbat ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
+- **Rasti Tipik ($p=0.1$):** Kurba portokalli rritet gradualisht; P(X>10) kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, P≈0.0004 — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
+- **Rrezik Minimal ($p=0.01$):** Vija blu ngadalë; për $N=200$, P≈10⁻⁵. PS mund të mbajë shumë përdorues aktivë pa rrezik.
 
 > Ky grafik shërben si udhëzues për **planifikimin e kapacitetit**, duke treguar rrezikun për çdo $N$ dhe $p$.
 
-![Tail Probability vs N](outputs/tail_vs_n_log.png)
+---
+
+## PMF - Analiza e Shpërndarjes Binomiale
+
+### Figura 2: $\mathbf{Binomial \text{ PMF } n=10, p=0.100 \text{ -- } P(X > 10) = 0}$
+
+Kjo figurë, e gjeneruar nga `plot_pmf_for_n(10)`, tregon PMF për $N=10$ përdorues totalë, që përputhet me kapacitetin e **Komutimit të Qarqeve (CS)**. Probabiliteti i konjestionit është teorikisht zero.
+
+| Element | Përshkrimi Akademik | Kuptimi në Figurë |
+| :--- | :--- | :--- |
+| **$N=10$** | Numri total i përdoruesve | Boshti X shkon deri në 10 |
+| **$p=0.100$** | Probabiliteti i aktivitetit të përdoruesit | Përdoret për të llogaritur çdo shirit blu |
+| **Threshold = 10** | Kapaciteti maksimal i përdoruesve aktivë | Vija e ndërprerë vertikale e zezë |
+| **Boshti Y** | Probabiliteti që saktësisht $k$ përdorues të jenë aktivë ($P(X=k)$) | Tregon lartësinë e çdo shiriti |
+
+![PMF N=10](outputs/pmf_n_10.png)
+
+**Analiza:**  
+- **P(X > 10) = 0:** Numri i përdoruesve është i barabartë me kapacitetin, nuk mund të ketë mbingarkesë.  
+- **Pritshmëria Matematike ($E[X]$):** $E[X] = N \cdot p = 10 \cdot 0.1 = 1$ aktiv, rreth 73% të kohës rrjeti është nën kapacitet.  
+- **Konkluzioni:** CS rezervon të gjithë kapacitetin edhe kur përdoruesit janë të pakët, duke e bërë rrjetin joefikas.  
+
+**Lidhja me PS:**  
+- Me PS dhe $N=35$, $P(X>10)=0.000424$, duke treguar fitimin e kapacitetit dhe përdorimin më efikas të rrjetit.
 
 ---
 
 ## PMF për N të ndryshme
-
-- **N=10:** `outputs/pmf_n_10.png` — PMF e N=10, **P(X>10)=0**, skenar ideal për packet-switching  
-![PMF N=10](outputs/pmf_n_10.png)
 
 - **N=35:** `outputs/pmf_n_35.png` — Bishti i kuq minimal, **P(X>10)=4.24e-4**  
 ![PMF N=35](outputs/pmf_n_35.png)
@@ -91,7 +99,7 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 ## Heatmap
 
 - **File:** `outputs/heatmap.png` — Heatmap 2D P(X>10) mbi N=1..200 dhe p=0.01..0.3  
-- **Interpretimi:** Zona blu: probabilitet i ulët, zona e verdhë/purpuri: probabilitet i lartë. Tregon kufirin e sigurt për dimensionimin e rrjetit.  
+- **Interpretimi:** Zona blu: probabilitet i ulët, zona e verdhë/purpuri: probabilitet i lartë.  
 ![Heatmap](outputs/heatmap.png)
 
 ---
@@ -111,18 +119,13 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 ## Metodologjia
 
 **Veglat e përdorura:**  
-- Python 3.12.3  
-- NumPy: Llogaritje numerike dhe gjenerim numrash të rastësishëm  
-- Pandas: Menaxhim i të dhënave dhe eksport në CSV  
-- SciPy: Shpërndarje binomiale dhe normale  
-- Matplotlib: Vizualizim, ruajtje PNG dhe PDF  
-- OS & Time: Menaxhim direktorish dhe matja e kohës së ekzekutimit  
+- Python 3.12.3, NumPy, Pandas, SciPy, Matplotlib, OS & Time  
 
 **Hapat e Implementimit:**  
-1. Caktimi i parametrave kryesorë: `LINK_CAPACITY_MBPS=1000`, `USER_RATE_MBPS=100`, `THRESHOLD_USERS=10`, `DEFAULT_P=0.1`  
+1. Parametrat kryesorë: `LINK_CAPACITY_MBPS=1000`, `USER_RATE_MBPS=100`, `THRESHOLD_USERS=10`, `DEFAULT_P=0.1`  
 2. Funksionet utility: `circuit_switching_capacity`, `binomial_pmf`, `binomial_tail_prob`, `normal_approx_tail`, `monte_carlo_tail`  
-3. Analizat e larta: `compute_tail_for_range`, `varied_p_analysis`  
-4. Gjenerimi i grafikëve: `plot_tail_vs_n`, `plot_pmf_for_n`, `plot_heatmap`  
+3. Analizat: `compute_tail_for_range`, `varied_p_analysis`  
+4. Gjenerimi grafikësh: `plot_tail_vs_n`, `plot_pmf_for_n`, `plot_heatmap`  
 5. Verifikimi: `verify_theoretical_vs_montecarlo`  
 6. Ruajtja e rezultateve: CSV, PNG, PDF  
 
@@ -130,7 +133,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 
 ## Përfundimet
 
-- **Packet-switching** është superior për rrjete me aktivitet të ulët (p<0.1), duke lejuar më shumë përdorues se circuit-switching me probabilitet mbingarkese <1%.  
+- **Packet-switching** superior për rrjete me aktivitet të ulët (p<0.1), duke lejuar më shumë përdorues se circuit-switching me probabilitet mbingarkese <1%.  
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
