@@ -90,6 +90,30 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 
 ---
 
+### Figura 4: $\mathbf{Binomial \text{ PMF } n=50, p=0.100 \text{ -- } P(X > 10) = 9.354602e-03}$
+
+Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e konjestionit kur rrjeti ka $\mathbf{N=50}$ përdorues. Ky skenar është kritik sepse tregon pikën ku rreziku fillon të rritet ndjeshëm, duke iu afruar kufirit të tolerueshëm të Cilësisë së Shërbimit (QoS).
+
+| Elementi | Vlera | Përshkrimi |
+| :--- | :--- | :--- |
+| **Numri Total ($N$)** | 50 | 5 herë më shumë përdorues se kapaciteti i CS (10) |
+| **Pritshmëria ($E[X]$)** | $50 \cdot 0.1 = 5$ | Mesatarisht 5 nga 10 vendet e kapacitetit përdoren |
+| **Prob. i Konjestionit** | 9.354602e-03 | Rreziku ≈0.00935 (rreth 9 në 1000 raste) |
+
+**Analiza e Ndryshimeve (N=35 vs N=50):**  
+- **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shirat blu) zhvendoset djathtas, rreth $k=5$.  
+- **Rritja e Zonës së Kuqe:** Kufiri $k_{\text{threshold}}=10$ mbetet i njëjtë; shiritat e kuq tani janë qartë të dukshëm, duke treguar rrezik më të lartë.  
+- **Konkluzioni:** Rreziku i konjestionit është rritur 22 herë krahasuar me $N=35$, duke iu afruar kufirit të pranueshëm të shërbimit.
+
+**Konkluzioni Inxhinierik:**  
+- Për $N=50$, sistemi kalon kufirin e rrezikut të QoS (10⁻³).  
+- PS ende ofron fitim kapaciteti 5 herë më shumë se CS, por me rrezik të rëndësishëm dështimi.  
+- Kërkohet monitorim rigoroz i rrjetit për të siguruar QoS.
+
+![PMF N=50](outputs/pmf_n_50.png)
+
+---
+
 ### Figura 5: $\mathbf{Binomial \text{ PMF } n=100, p=0.100 \text{ -- } P(X > 10) = 4.168445e-01}$
 
 Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komutimi i Paketave (PS) është në kufirin e tij të dështimit.
@@ -106,7 +130,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 **Analiza:**  
 - **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa blu ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon konjestionin.  
 - **Dështimi i QoS:** Pjesa e kuqe është e madhe dhe dominuese, rrjeti është pothuajse gjysmën e kohës i mbingarkuar.  
-- **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.  
+- **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
 
 > Kjo figurë lidh vizualisht pikën e rrezikut të lartë në **Heatmap** dhe kurbën $p=0.1$ në grafikun logaritmik (Fig. 1).
 
@@ -117,6 +141,13 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 - **File:** `outputs/heatmap.png` — Heatmap 2D P(X>10) mbi N=1..200 dhe p=0.01..0.3  
 - **Interpretimi:** Zona blu: probabilitet i ulët, zona e verdhë/purpuri: probabilitet i lartë.  
 ![Heatmap](outputs/heatmap.png)
+
+**Analiza e Hartës së Nxehtësisë:**  
+- **Zona e Mbingarkesës së Lartë (E Verdhë):** Përdorues të shumtë dhe aktivitet i lartë, probabiliteti i mbingarkesës afër 1.0.  
+- **Zona e Mbingarkesës së Ulët (E Errët/Vjollcë):** Përdorues të pakët ose aktivitet i ulët, probabiliteti i mbingarkesës afër 0.  
+- **Zona e Tranzicionit (E Gjelbër/Blu):** Numri i përdoruesve i pranueshëm me probabilitet aktiviteti të ulët; p.sh., $p\approx0.1$ dhe $N=35$–$50$ përdorues, probabiliteti mbingarkesë i kontrolluar (<0.01).  
+
+> Harta e nxehtësisë demonstron qartë **"fitimin"** e Paket-Switching mbi Circuit-Switching, duke ilustruar kapacitetin statistikisht të pranueshëm.
 
 ---
 
@@ -152,5 +183,4 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - **Packet-switching** superior për rrjete me aktivitet të ulët (p<0.1), duke lejuar më shumë përdorues se circuit-switching me probabilitet mbingarkese <1%.  
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
-- Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
-
+- Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
