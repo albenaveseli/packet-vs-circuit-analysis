@@ -52,7 +52,7 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 **Analiza e formave të grafikëve:**  
 - **Rrezik i Lartë ($p=0.2, 0.3$):** Lakoret ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
 - **Rasti Tipik ($p=0.1$):** Lakorja e gjelbër rritet gradualisht; Për $N=35$, $\text{P} \approx 0.0004$ — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
-- **Rrezik Minimal ($p=0.01$):** Lakorja e kaltërt ngadalë. PS mund të mbajë shumë përdorues aktivë pa rrezik.
+- **Rrezik Minimal ($p=0.05$):** Lakorja e kaltërt ngadalë. PS mund të mbajë shumë përdorues aktivë pa rrezik.
 
 > Ky grafik shërben si udhëzues për **planifikimin e kapacitetit**, duke treguar rrezikun për çdo $N$ dhe $p$.
 
@@ -190,6 +190,7 @@ Krahasimi i rezultateve teorike, të simulimeve Monte Carlo dhe të përafërimi
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
