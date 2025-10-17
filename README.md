@@ -131,12 +131,12 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 | **Numri Total ($N$)** | 100 | 10 herë më shumë se kapaciteti i CS |
 | **Pritshmëria ($E[X]$)** | 100 * 0.1 = 10 | Mesatarja e përdoruesve aktivë përputhet me kapacitetin |
 | **Threshold** | 10 | Kapaciteti i lidhjes (vija e ndërprerë) |
-| **Prob. i Konjestionit** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
+| **Prob. i mbingarkesës** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
 
 **Analiza:**  
 - **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa e kaltërt ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon mbingarkesën.  
 - **Dështimi i QoS:** Pjesa e kuqe është e madhe dhe dominuese, rrjeti është pothuajse gjysmën e kohës i mbingarkuar.  
-- **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
+- **Përfundimi:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
 
 > Kjo figurë lidh vizualisht pikën e rrezikut të lartë në **Heatmap** dhe lakoren $p=0.1$ në grafikun logaritmik (Fig. 1).
 
@@ -148,12 +148,12 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 - **Interpretimi:** Zona blu: probabilitet i ulët, zona verdhë/gjelbër e hapur: probabilitet i lartë.  
 ![Heatmap](outputs/heatmap.png)
 
-**Analiza e Hartës së Nxehtësisë:**  
+**Analiza e Heatmap:**  
 - **Zona e Mbingarkesës së Lartë (E Verdhë):** Përdorues të shumtë dhe aktivitet i lartë, probabiliteti i mbingarkesës afër 1.0.  
 - **Zona e Mbingarkesës së Ulët (E Errët/Vjollcë):** Përdorues të pakët ose aktivitet i ulët, probabiliteti i mbingarkesës afër 0.  
 - **Zona e Tranzicionit (E Gjelbër/E Kaltërt):** Numri i përdoruesve i pranueshëm me probabilitet aktiviteti të ulët; p.sh., $p\approx0.1$ dhe $N=35$–$50$ përdorues, probabiliteti mbingarkesë i kontrolluar (<0.01).  
 
-> Harta e nxehtësisë demonstron qartë **"fitimin"** e Paket-Switching mbi Circuit-Switching, duke ilustruar kapacitetin statistikisht të pranueshëm.
+> Heatmap demonstron qartë **"fitimin"** e Paket-Switching mbi Circuit-Switching, duke ilustruar kapacitetin statistikisht të pranueshëm.
 
 ---
 
@@ -190,6 +190,7 @@ Krahasimi i rezultateve teorike, të simulimeve Monte Carlo dhe të përafërimi
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
