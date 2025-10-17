@@ -1,4 +1,4 @@
-# packet_vs_circuit_improved.py
+
 import os
 import time
 import numpy as np
