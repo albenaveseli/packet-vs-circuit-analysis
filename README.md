@@ -1,6 +1,5 @@
 # Packet vs Circuit Switching Analysis
 
-
 ---
 
 ## Përshkrimi i Projektit
@@ -27,16 +26,24 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 - **Main script:** `packet_vs_circuit_improved.py`  
 - **Outputs dhe Figurat:**  
+  - Tail Probability vs N: `outputs/tail_vs_n_log.png`  
+  - PMF N=10: `outputs/pmf_n_10.png`  
+  - PMF N=35: `outputs/pmf_n_35.png`  
+  - PMF N=50: `outputs/pmf_n_50.png`  
+  - PMF N=100: `outputs/pmf_n_100.png`  
+  - Heatmap: `outputs/heatmap.png`  
 
-- **Tail Probability vs N**
-- **File:** `outputs/tail_vs_n_log.png`  
-- ## Figura: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
+---
+
+## Tail Probability vs N
+
+### Figura: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
 
 Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa rritet numri i përdoruesve ($N$) për pesë vlera të ndryshme të probabilitetit të aktivitetit ($p$).
 
 ---
 
-## 1. Kuptimi i Boshteve
+### 1. Kuptimi i Boshteve
 
 | Element | Përshkrimi | Kuptimi Inxhinierik |
 | :--- | :--- | :--- |
@@ -46,7 +53,7 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 ---
 
-## 2. Analiza e Kurbave
+### 2. Analiza e Kurbave
 
 * **Rrezik i Lartë ($p=0.2, 0.3$)**: Kurbat ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
 * **Rasti Tipik ($p=0.1$)**: Kurba portokalli rritet gradualisht; P(X>10) kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, P≈0.0004 — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
@@ -54,18 +61,19 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 ---
 
-## 3. Përfundimi
+### 3. Përfundimi
 
 1. **Rritja Eksponenciale e Rrezikut:** Çdo përdorues i ri shton një rrezik më të madh pas arritjes së mesatares $N \cdot p \approx 5$.  
 2. **Varësia nga Trafiku:** Suksesi i PS varet nga natyra e trafikut; përdoruesit duhet të qëndrojnë në zonën “blu/vjollcë” për të siguruar QoS.  
 
 > Ky grafik shërben si udhëzues për **planifikimin e kapacitetit**, duke treguar rrezikun për çdo $N$ dhe $p$.
 
- 
-- **Figura:**
 ![Tail Probability vs N](outputs/tail_vs_n_log.png)
 
-### PMF për N të ndryshme
+---
+
+## PMF për N të ndryshme
+
 - **N=10:** `outputs/pmf_n_10.png` — PMF e N=10, **P(X>10)=0**, skenar ideal për packet-switching  
 ![PMF N=10](outputs/pmf_n_10.png)
 
@@ -78,16 +86,19 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 - **N=100:** `outputs/pmf_n_100.png` — P(X>10)=0.417, rrezik i konsiderueshëm për packet-switching  
 ![PMF N=100](outputs/pmf_n_100.png)
 
-### Heatmap
+---
+
+## Heatmap
+
 - **File:** `outputs/heatmap.png` — Heatmap 2D P(X>10) mbi N=1..200 dhe p=0.01..0.3  
 - **Interpretimi:** Zona blu: probabilitet i ulët, zona e verdhë/purpuri: probabilitet i lartë. Tregon kufirin e sigurt për dimensionimin e rrjetit.  
 ![Heatmap](outputs/heatmap.png)
 
 ---
 
-## Tabela verfikuese
+## Tabela Verifikuese
 
-- Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1:
+Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1:
 
 | N   | Theoretical | Monte Carlo | Normal Approx |
 |-----|------------|------------|---------------|
@@ -123,10 +134,3 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
-
-
-
-
-
-
-
