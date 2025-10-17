@@ -85,7 +85,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 | **Numri Total ($N$)** | 35 | Numri total i përdoruesve në PS |
 | **Probabiliteti ($p$)** | 0.100 | Probabiliteti që çdo përdorues është aktiv |
 | **Threshold** | 10 | Kapaciteti maksimal i përdoruesve aktivë |
-| **Probabiliteti i Konjestionit** | 4.242976e-04 | Konfirmon rrezikun shumë të ulët (≈0.0004) |
+| **Probabiliteti i mbingarkesës** | 4.242976e-04 | Konfirmon rrezikun shumë të ulët (≈0.0004) |
 
 ![PMF N=35](outputs/pmf_n_35.png)
 
@@ -190,6 +190,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
