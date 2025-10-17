@@ -26,9 +26,9 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 ## Struktura e Projektit
 
 - **Main script:** `packet_vs_circuit_improved.py`  
-- **Outputs dhe Figurët:**  
+- **Outputs dhe Figurat:**  
 
-### Tail Probability vs N
+- **Tail Probability vs N**
 - **File:** `outputs/tail_vs_n_log.png`  
 - ## Figura: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
 
@@ -123,6 +123,7 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
+
 
 
 
