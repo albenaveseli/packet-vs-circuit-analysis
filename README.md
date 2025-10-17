@@ -107,7 +107,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e m
 | **Prob. i mbingarkesës** | 9.354602e-03 | Rreziku ≈0.00935 (rreth 9 në 1000 raste) |
 
 **Analiza e Ndryshimeve (N=35 vs N=50):**  
-- **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shirat blu) zhvendoset djathtas, rreth $k=5$.  
+- **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shiritat e kaltërt) zhvendoset djathtas, rreth $k=5$.  
 - **Rritja e Zonës së Kuqe:** Kufiri $k_{\text{threshold}}=10$ mbetet i njëjtë; shiritat e kuq tani janë qartë të dukshëm, duke treguar rrezik më të lartë.  
 - **Konkluzioni:** Rreziku i mbingarkesës është rritur 22 herë krahasuar me $N=35$, duke iu afruar kufirit të pranueshëm të shërbimit.
 
@@ -134,7 +134,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 | **Prob. i Konjestionit** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
 
 **Analiza:**  
-- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa blu ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon mbingarkesën.  
+- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa e kaltërt ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon mbingarkesën.  
 - **Dështimi i QoS:** Pjesa e kuqe është e madhe dhe dominuese, rrjeti është pothuajse gjysmën e kohës i mbingarkuar.  
 - **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
 
@@ -151,7 +151,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 **Analiza e Hartës së Nxehtësisë:**  
 - **Zona e Mbingarkesës së Lartë (E Verdhë):** Përdorues të shumtë dhe aktivitet i lartë, probabiliteti i mbingarkesës afër 1.0.  
 - **Zona e Mbingarkesës së Ulët (E Errët/Vjollcë):** Përdorues të pakët ose aktivitet i ulët, probabiliteti i mbingarkesës afër 0.  
-- **Zona e Tranzicionit (E Gjelbër/Blu):** Numri i përdoruesve i pranueshëm me probabilitet aktiviteti të ulët; p.sh., $p\approx0.1$ dhe $N=35$–$50$ përdorues, probabiliteti mbingarkesë i kontrolluar (<0.01).  
+- **Zona e Tranzicionit (E Gjelbër/E Kaltërt):** Numri i përdoruesve i pranueshëm me probabilitet aktiviteti të ulët; p.sh., $p\approx0.1$ dhe $N=35$–$50$ përdorues, probabiliteti mbingarkesë i kontrolluar (<0.01).  
 
 > Harta e nxehtësisë demonstron qartë **"fitimin"** e Paket-Switching mbi Circuit-Switching, duke ilustruar kapacitetin statistikisht të pranueshëm.
 
@@ -159,7 +159,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 
 ## Tabela Verifikuese
 
-Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1:
+Krahasimi i rezultateve teorike, të simulimeve Monte Carlo dhe të përafërimit normal për N = [35, 50, 100] me p = 0.1.
 
 | N   | Theoretical | Monte Carlo | Normal Approx |
 |-----|------------|------------|---------------|
@@ -190,6 +190,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
