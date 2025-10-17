@@ -30,7 +30,51 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 ### Tail Probability vs N
 - **File:** `outputs/tail_vs_n_log.png`  
-- **Përshkrimi:** Linja të **P(X>10)** për N=1..200 dhe p=[0.01,0.05,0.1,0.2,0.3]. Shkalla logaritmike y thekson probabilitetet e vogla.  
+- **Përshkrimi:** ## Figura e Analizuar: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
+
+Kjo figurë, e gjeneruar nga funksioni `plot_tail_vs_n`, është thelbi i vlerësimit të **skalabilitetit** dhe **menaxhimit të rrezikut** në Packet Switching (PS). Ajo krahason sesa shpejt rritet rreziku i konjestionit $P(X > 10)$ ndërsa rritet numri i përdoruesve ($N$), për pesë skenarë të ndryshëm të sjelljes së përdoruesit ($p$).
+
+---
+
+## 1. Kuptimi i Boshteve dhe Shkallës Logaritmike
+
+| Elementi | Përshkrimi Akademik | Kuptimi Inxhinierik |
+| :--- | :--- | :--- |
+| **Boshti X ($N$)** | Numri i Provave Binomiale (Përdoruesit Totalë) | Tregon numrin e përdoruesve që tentojmë t'i mbajmë në rrjet. |
+| **Boshti Y (Log Scale)** | Probabiliteti i Mbetur (Tail Probability): $\mathbf{P(X > 10)}$ | Mat rrezikun e **Dështimit të QoS** (Konjestionit). Vlera $10^{-3}$ shpesh shërben si kufi i pranueshëm. |
+| **$N$ nga 1 deri në 10** | **Zona e Dështimit Të PS:** $\mathbf{P(X > 10) = 0}$ | Kjo zonë është deterministike, pasi është e pamundur që më shumë se $N$ përdorues të jenë aktivë. Linjat fillojnë nga $N=11$. |
+
+---
+
+## 2. Analiza Detajuar e Kurbave dhe Skalabiliteti
+
+Çdo kurbë tregon efikasitetin e PS në varësi të natyrës së trafikut ($p$). Kujtojmë se rasti i studimit është $p=0.1$ (kurba portokalli).
+
+### A. Kurbat me Rrezik të Lartë ($\mathbf{p=0.2}$ dhe $\mathbf{p=0.3}$)
+
+* **Përshkrimi:** Kurbat vjollcë dhe e kuqe tregojnë një rritje **shumë të shpejtë** të rrezikut, pothuajse vertikale, menjëherë pas $N=20$.  
+* **Implikimi Inxhinierik:** Mesatarja e përdoruesve aktivë ($N \cdot p$) arrin kapacitetin 10 shumë shpejt (p.sh., në $N=34$ për $p=0.3$), dhe sistemi bëhet i mbingarkuar me një numër minimal përdoruesish. Packet Switching është **joefikas** për këtë sjellje të trafikut.
+
+### B. Kurba e Rastit të Studimit ($\mathbf{p=0.1}$)
+
+* **Përshkrimi (Kurba Portokalli):** Rritet shumë më gradualisht dhe kalon kufirin $\mathbf{10^{-3}}$ (QoS i pranueshëm) rreth $\mathbf{N \approx 55}$.  
+* **Pika Kryesore ($N=35$):** Bie në zonën midis $10^{-4}$ dhe $10^{-5}$ në grafik, duke konfirmuar vlerën e llogaritur $0.0004$ dhe duke justifikuar **fitimin 3.5 herë të kapacitetit**.  
+* **Konkluzioni:** Për trafikun tipik të internetit ($p=0.1$), PS ofron efikasitet maksimal, por duhet të menaxhohet me kujdes nga inxhinieri (të mos kalojë $N \approx 55$).
+
+### C. Kurba me Rrezik Minimal ($\mathbf{p=0.01}$ - Vija Blu)
+
+* **Përshkrimi:** Rritet shumë ngadalë. Për $\mathbf{N=200}$, rreziku mbetet në një nivel jashtëzakonisht të ulët ($\approx 10^{-5}$).  
+* **Konkluzioni:** Kjo demonstron fuqinë maksimale të Packet Switching. Kur përdoruesit janë shumë pasivë, sistemi mund të pranojë $\mathbf{20 \text{ herë më shumë }}$ përdorues se Circuit Switching, sepse probabiliteti që ata të aktivizohen njëkohësisht është i papërfillshëm.
+
+---
+
+## 3. Përfundimi Strategjik
+
+Ky grafik konfirmon dy parime themelore të rrjeteve:
+
+1. **Rritja Eksponenciale e Rrezikut:** Sapo sistemi i Komutimit të Paketave fillon të funksionojë në mënyrë jo-ideale (duke kaluar mesataren $N \cdot p \approx 5$), çdo përdorues i ri shton një rrezik relativisht më të madh se i mëparshmi, duke çuar në rritjen e shpejtë dhe të pakontrollueshme të $P(X > 10)$.  
+2. **Varësia nga Statistikat:** Suksesi i PS është i varur drejtpërdrejt nga natyra e trafikut. Inxhinierët duhet të operojnë në **zonën vjollcë/blu** (trafik pasiv) dhe të shmangin zonën e lartë, ku PS nuk arrin të ofrojë QoS të pranueshme.
+ 
 - **Figura:**
 ![Tail Probability vs N](outputs/tail_vs_n_log.png)
 
@@ -54,7 +98,7 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 ---
 
-## Verification Table
+## Tabela verfikuese
 
 - Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1:
 
@@ -92,6 +136,7 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
+
 
 
 
