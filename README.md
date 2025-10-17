@@ -16,7 +16,7 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 - Demonstrohet se packet-switching ofron efikasitet më të lartë se circuit-switching në skenarë me aktivitet të ulët (p.sh., p=0.1), por rrezikon mbingarkesë kur numri i përdoruesve (N) rritet.
 
 **Qëllime Sekondare:**  
-- Analizë e probabiliteteve të bishtit për N=1..200 dhe vlera të ndryshme të probabilitetit p.  
+- Analizë e probabiliteteve të ngjarjeve ekstreme (dmth probabiliteti që numri i përdoruesve aktivë tejkalon kapacitetin e rrjetit) për N=1..200 dhe vlera të ndryshme të probabilitetit p.  
 - Krahasim mes rezultateve teorike, aproximimit normal dhe simulimeve Monte Carlo.  
 - Gjenerimi i grafikëve dhe raporteve për interpretim akademik.
 
@@ -184,3 +184,4 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
