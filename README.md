@@ -90,7 +90,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 
 ---
 
-### Figura 4: $\mathbf{Binomial \text{ PMF } n=100, p=0.100 \text{ -- } P(X > 10) = 4.168445e-01}$
+### Figura 5: $\mathbf{Binomial \text{ PMF } n=100, p=0.100 \text{ -- } P(X > 10) = 4.168445e-01}$
 
 Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komutimi i Paketave (PS) është në kufirin e tij të dështimit.
 
@@ -153,3 +153,4 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
+
