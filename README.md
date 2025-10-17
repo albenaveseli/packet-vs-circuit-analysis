@@ -24,14 +24,20 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 ## Struktura e Projektit
 
-- **Main script:** `packet_vs_circuit_improved.py`  
+- **Main script:** `network_analysis.py`  
 - **Outputs dhe Figurat:**  
-  - Tail Probability vs N: `outputs/tail_vs_n_log.png`  
-  - PMF N=10: `outputs/pmf_n_10.png`  
-  - PMF N=35: `outputs/pmf_n_35.png`  
-  - PMF N=50: `outputs/pmf_n_50.png`  
-  - PMF N=100: `outputs/pmf_n_100.png`  
-  - Heatmap: `outputs/heatmap.png`  
+  - **Probabiliteti i tejkalimit vs N:** `outputs/tail_vs_n_log.png`  
+    *(Figura tregon se si ndryshon probabiliteti që numri i përdoruesve aktivë të tejkalojë kapacitetin me rritjen e N.)*  
+  - **PMF N=10:** `outputs/pmf_n_10.png`  
+    *(Distribucioni i probabiliteteve për 10 përdorues; shiritat tregojnë probabilitetin për secilin numër përdoruesish aktivë.)*  
+  - **PMF N=35:** `outputs/pmf_n_35.png`  
+    *(Distribucioni i probabiliteteve për 35 përdorues; pjesa ku k>10 tregon rrezikun e mbingarkesës.)*  
+  - **PMF N=50:** `outputs/pmf_n_50.png`  
+    *(Distribucioni i probabiliteteve për 50 përdorues; rritet probabiliteti i tejkalimit të kapacitetit.)*  
+  - **PMF N=100:** `outputs/pmf_n_100.png`  
+    *(Distribucioni i probabiliteteve për 100 përdorues; P(X>10) është rreth 41.7%, rrjeti pothuajse gjysmë i mbingarkuar.)*  
+  - **Heatmap:** `outputs/heatmap.png`  
+    *(Harta ngjyrash e P(X>10) për N=1..200 dhe p=0.01..0.3; tregon zonat me rrezik të ulët dhe të lartë të mbingarkesës.)*  
 
 ---
 
@@ -184,4 +190,5 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
