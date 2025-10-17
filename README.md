@@ -90,13 +90,25 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 
 ---
 
-## PMF për N të tjera
+### Figura 4: $\mathbf{Binomial \text{ PMF } n=100, p=0.100 \text{ -- } P(X > 10) = 4.168445e-01}$
 
-- **N=50:** `outputs/pmf_n_50.png` — P(X>10)=9.36e-3, rreziku rritet lehtësisht  
-![PMF N=50](outputs/pmf_n_50.png)
+Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komutimi i Paketave (PS) është në kufirin e tij të dështimit.
 
-- **N=100:** `outputs/pmf_n_100.png` — P(X>10)=0.417, rrezik i konsiderueshëm për packet-switching  
 ![PMF N=100](outputs/pmf_n_100.png)
+
+| Elementi | Vlera | Kuptimi |
+| :--- | :--- | :--- |
+| **Numri Total ($N$)** | 100 | 10 herë më shumë se kapaciteti i CS |
+| **Pritshmëria ($E[X]$)** | 100 * 0.1 = 10 | Mesatarja e përdoruesve aktivë përputhet me kapacitetin |
+| **Threshold** | 10 | Kapaciteti i lidhjes (vija e ndërprerë) |
+| **Prob. i Konjestionit** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
+
+**Analiza:**  
+- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa blu ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon konjestionin.  
+- **Dështimi i QoS:** Pjesa e kuqe është e madhe dhe dominuese, rrjeti është pothuajse gjysmën e kohës i mbingarkuar.  
+- **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.  
+
+> Kjo figurë lidh vizualisht pikën e rrezikut të lartë në **Heatmap** dhe kurbën $p=0.1$ në grafikun logaritmik (Fig. 1).
 
 ---
 
