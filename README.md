@@ -1,8 +1,5 @@
 # Packet vs Circuit Switching Analysis
 
-**Author:** Albena Veseli  
-**Date:** 17-10-2025  
-**Version:** 1.0  
 
 ---
 
@@ -95,5 +92,6 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.
+
 
 
