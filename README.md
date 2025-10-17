@@ -4,9 +4,9 @@
 
 ## Përshkrimi i Projektit
 
-Ky projekt trajton krahasimin mes dy paradigmave kryesore të rrjetëzimit – **packet-switching** (ku të dhënat ndahen në paketa të pavarura dhe transmetohen në mënyrë asinkrone) dhe **circuit-switching** (ku krijohet një qark i dedikuar për çdo sesion komunikimi).  
+Ky projekt trajton krahasimin mes dy mënyrave kryesore të lidhjes dhe komunikimit në rrjetet kompjuterike – packet-switching, ku të dhënat ndahen në paketa të vogla dhe dërgohen në mënyrë të pavarur, dhe circuit-switching, ku për çdo sesion komunikimi krijohet një lidhje e dedikuar. 
 
-Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e rastësishëm të përdoruesve dhe përllogarit probabilitetin e mbingarkesës **P(X > k)**.
+Për të modeluar aktivitetin e rastësishëm të përdoruesve dhe për të kuptuar se kur rrjeti mund të mbingarkohet, përdoret shpërndarja binomiale, duke llogaritur probabilitetin **P(X > k)**.
 
 ---
 
@@ -17,31 +17,31 @@ Projektimi përdor **shpërndarjen binomiale** për të simuluar aktivitetin e r
 
 **Qëllime Sekondare:**  
 - Analizë e probabiliteteve të ngjarjeve ekstreme (dmth probabiliteti që numri i përdoruesve aktivë tejkalon kapacitetin e rrjetit) për N=1..200 dhe vlera të ndryshme të probabilitetit p.  
-- Krahasim mes rezultateve teorike, aproximimit normal dhe simulimeve Monte Carlo.  
-- Gjenerimi i grafikëve dhe raporteve për interpretim akademik.
+- Krahasim që tregon se si rezultatet teorike përputhen me përafrimin e shpërndarjes normale dhe me rezultatet nga simulimet Monte Carlo  
+- Gjenerimi i grafikëve dhe raporteve për interpretim.
 
 ---
 
 ## Struktura e Projektit
 
-- **Main script:** `network_analysis.py`  
-- **Outputs dhe Figurat:**  
-  - **Probabiliteti i tejkalimit vs N:** `outputs/tail_vs_n_log.png`  
-    *(Figura tregon se si ndryshon probabiliteti që numri i përdoruesve aktivë të tejkalojë kapacitetin me rritjen e N.)*  
+- **Kodi kryesor:** `network_analysis.py`  
+- **Rezultatet dhe figurat**  
+  - **Probabiliteti i mbingarkesës në funksion të N** `outputs/tail_vs_n_log.png`  
+    *(Figura tregon se si probabiliteti që numri i përdoruesve aktivë tejkalon kapacitetin ndryshon me rritjen e N.)*  
   - **PMF N=10:** `outputs/pmf_n_10.png`  
-    *(Distribucioni i probabiliteteve për 10 përdorues; shiritat tregojnë probabilitetin për secilin numër përdoruesish aktivë.)*  
+    *(Kjo figurë tregon shpërndarjen e probabiliteteve për 10 përdorues, ku çdo shirit përfaqëson sa e mundshme është të ketë një numër të caktuar përdoruesish aktivë.)*  
   - **PMF N=35:** `outputs/pmf_n_35.png`  
-    *(Distribucioni i probabiliteteve për 35 përdorues; pjesa ku k>10 tregon rrezikun e mbingarkesës.)*  
+    *(Kjo figurë tregon shpërndarjen e probabiliteteve për 35 përdorues, ku pjesa për k > 10 tregon rrezikun që rrjeti të përjetojë mbingarkesë.)*  
   - **PMF N=50:** `outputs/pmf_n_50.png`  
-    *(Distribucioni i probabiliteteve për 50 përdorues; rritet probabiliteti i tejkalimit të kapacitetit.)*  
+    *(Kjo figurë tregon shpërndarjen e probabiliteteve për 50 përdorues, ku duket se probabiliteti që numri i përdoruesve të tejkalojë kapacitetin rritet.)*  
   - **PMF N=100:** `outputs/pmf_n_100.png`  
-    *(Distribucioni i probabiliteteve për 100 përdorues; P(X>10) është rreth 41.7%, rrjeti pothuajse gjysmë i mbingarkuar.)*  
+    *(Kjo figurë tregon shpërndarjen e probabiliteteve për 100 përdorues; probabiliteti që numri i përdoruesve aktivë të tejkalojë 10 është rreth 41.7%, që tregon se rrjeti është pothuajse gjysmë i mbingarkuar.)*  
   - **Heatmap:** `outputs/heatmap.png`  
-    *(Harta ngjyrash e P(X>10) për N=1..200 dhe p=0.01..0.3; tregon zonat me rrezik të ulët dhe të lartë të mbingarkesës.)*  
+    *(Kjo hartë ngjyrash tregon probabilitetin P(X > 10) për N nga 1 deri në 200 dhe p nga 0.01 deri në 0.3, duke evidentuar zonat me rrezik të ulët dhe të lartë të mbingarkesës së rrjetit.)*  
 
 ---
 
-## Tail Probability vs N
+## Probabiliteti i tejkalimit në varësi të N
 
 ### Figura 1: $\mathbf{P(X > 10) \text{ vs } N \text{ for different } p}$
 
@@ -49,10 +49,10 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 ![Tail Probability vs N](outputs/tail_vs_n_log.png)
 
-**Analiza e Kurbave:**  
-- **Rrezik i Lartë ($p=0.2, 0.3$):** Kurbat ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
-- **Rasti Tipik ($p=0.1$):** Kurba e gjelbër rritet gradualisht; $\text{P}(X>10)$ kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, $\text{P} \approx 0.0004$ — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
-- **Rrezik Minimal ($p=0.01$):** Vija blu ngadalë; për $N=200$, P≈10⁻⁵. PS mund të mbajë shumë përdorues aktivë pa rrezik.
+**Analiza e formave të grafikëve:**  
+- **Rrezik i Lartë ($p=0.2, 0.3$):** Lakoret ngjyrë vjollcë/kuqe rriten shumë shpejt; sistemi bëhet i mbingarkuar me përdorues të pakët.  
+- **Rasti Tipik ($p=0.1$):** Lakorja e gjelbër rritet gradualisht; $\text{P}(X>10)$ kalon $10^{-3}$ rreth $N \approx 55$. Për $N=35$, $\text{P} \approx 0.0004$ — PS fiton 3.5 herë kapacitet më shumë se Circuit Switching.  
+- **Rrezik Minimal ($p=0.01$):** Lakorja blu ngadalë; për $N=200$, P≈10⁻⁵. PS mund të mbajë shumë përdorues aktivë pa rrezik.
 
 > Ky grafik shërben si udhëzues për **planifikimin e kapacitetit**, duke treguar rrezikun për çdo $N$ dhe $p$.
 
@@ -62,7 +62,7 @@ Kjo figurë tregon rritjen e probabilitetit të mbingarkesës $P(X>10)$ ndërsa 
 
 ### Figura 2: $\mathbf{Binomial \text{ PMF } n=10, p=0.100 \text{ -- } P(X > 10) = 0}$
 
-Kjo figurë, e gjeneruar nga `plot_pmf_for_n(10)`, tregon PMF për $N=10$ përdorues totalë, që përputhet me kapacitetin e **Komutimit të Qarqeve (CS)**. Probabiliteti i konjestionit është teorikisht zero.
+Kjo figurë, e gjeneruar nga `plot_pmf_for_n(10)`, tregon PMF për $N=10$ përdorues totalë, që përputhet me kapacitetin e **Komutimit të Qarqeve (CS)**. Probabiliteti i mbingarkesës është teorikisht zero.
 
 ![PMF N=10](outputs/pmf_n_10.png)
 
@@ -98,7 +98,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 
 ### Figura 4: $\mathbf{Binomial \text{ PMF } n=50, p=0.100 \text{ -- } P(X > 10) = 9.354602e-03}$
 
-Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e konjestionit kur rrjeti ka $\mathbf{N=50}$ përdorues. Ky skenar është kritik sepse tregon pikën ku rreziku fillon të rritet ndjeshëm, duke iu afruar kufirit të tolerueshëm të Cilësisë së Shërbimit (QoS).
+Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e mbingarkesës kur rrjeti ka $\mathbf{N=50}$ përdorues. Ky skenar është kritik sepse tregon pikën ku rreziku fillon të rritet ndjeshëm, duke iu afruar kufirit të tolerueshëm të Cilësisë së Shërbimit (QoS).
 
 | Elementi | Vlera | Përshkrimi |
 | :--- | :--- | :--- |
@@ -109,7 +109,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(50)`, vizualizon probabilitetin e k
 **Analiza e Ndryshimeve (N=35 vs N=50):**  
 - **Zhvendosja e Qendrës:** Krahasuar me $N=35$ ($E[X]=3.5$), qendra e shpërndarjes (shirat blu) zhvendoset djathtas, rreth $k=5$.  
 - **Rritja e Zonës së Kuqe:** Kufiri $k_{\text{threshold}}=10$ mbetet i njëjtë; shiritat e kuq tani janë qartë të dukshëm, duke treguar rrezik më të lartë.  
-- **Konkluzioni:** Rreziku i konjestionit është rritur 22 herë krahasuar me $N=35$, duke iu afruar kufirit të pranueshëm të shërbimit.
+- **Konkluzioni:** Rreziku i mbingarkesës është rritur 22 herë krahasuar me $N=35$, duke iu afruar kufirit të pranueshëm të shërbimit.
 
 **Konkluzioni Inxhinierik:**  
 - Për $N=50$, sistemi kalon kufirin e rrezikut të QoS (10⁻³).  
@@ -134,11 +134,11 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 | **Prob. i Konjestionit** | 0.4168445 | Mbingarkesa ndodh rreth 41.7% të kohës |
 
 **Analiza:**  
-- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa blu ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon konjestionin.  
+- **Kufiri Kritik:** Vija e ndërprerë bie në qendër të shpërndarjes; pjesa blu ($P(X \le 10) \approx 58.3\%$) tregon funksionimin normal, pjesa e kuqe ($P(X > 10) \approx 41.7\%$) tregon mbingarkesën.  
 - **Dështimi i QoS:** Pjesa e kuqe është e madhe dhe dominuese, rrjeti është pothuajse gjysmën e kohës i mbingarkuar.  
 - **Konkluzioni:** PS nuk është më i përdorshëm në këtë skenar; QoS ka dështuar.
 
-> Kjo figurë lidh vizualisht pikën e rrezikut të lartë në **Heatmap** dhe kurbën $p=0.1$ në grafikun logaritmik (Fig. 1).
+> Kjo figurë lidh vizualisht pikën e rrezikut të lartë në **Heatmap** dhe lakoren $p=0.1$ në grafikun logaritmik (Fig. 1).
 
 ---
 
@@ -190,6 +190,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
