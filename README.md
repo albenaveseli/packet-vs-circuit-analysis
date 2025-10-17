@@ -68,7 +68,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(10)`, tregon PMF për $N=10$ përdo
 
 **Analiza:**  
 - **P(X > 10) = 0:** Numri i përdoruesve është i barabartë me kapacitetin, nuk mund të ketë mbingarkesë.  
-- **Pritshmëria Matematike ($E[X]$):** $E[X] = N \cdot p = 10 \cdot 0.1 = 1$ aktiv, rreth 73% të kohës rrjeti është nën kapacitet.  
+- **Pritshmëria Matematike ($E[X]$):** $E[X] = N \cdot p = 10 \cdot 0.1 = 1$ aktiv, rrjeti është gjithmonë nën kapacitet; përdorimi mesatar është 10%..  
 - **Konkluzioni:** CS rezervon të gjithë kapacitetin edhe kur përdoruesit janë të pakët, duke e bërë rrjetin joefikas.  
 
 **Lidhja me PS:**  
@@ -145,7 +145,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(100)`, vizualizon skenarin ku Komut
 ## Heatmap
 
 - **File:** `outputs/heatmap.png` — Heatmap 2D P(X>10) mbi N=1..200 dhe p=0.01..0.3  
-- **Interpretimi:** Zona blu: probabilitet i ulët, zona e verdhë/purpuri: probabilitet i lartë.  
+- **Interpretimi:** Zona blu: probabilitet i ulët, zona verdhë/gjelbër e hapur: probabilitet i lartë.  
 ![Heatmap](outputs/heatmap.png)
 
 **Analiza e Hartës së Nxehtësisë:**  
@@ -190,6 +190,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
