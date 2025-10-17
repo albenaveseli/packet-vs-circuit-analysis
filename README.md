@@ -92,7 +92,7 @@ Kjo figurë, e gjeneruar nga `plot_pmf_for_n(35)`, paraqet vlerësimin e probabi
 **Analiza:**  
 - **Pritshmëria ($E[X]$):** $E[X] = 35 \cdot 0.1 = 3.5$; shiritat blu tregojnë përdorim mesatar ~35% të kapacitetit.  
 - **Kufiri i Rrezikut:** Threshold = 10; shiritat e kuq pothuajse nuk duken, duke treguar probabilitet shumë të ulët të mbingarkesës.  
-- **Konkluzioni:** PS lejon 35 përdorues, 3.5 herë më shumë se CS, me probabilitet të pranueshëm të dështimit. Pikë optimale operative.
+- **Konkluzioni:** PS lejon 35 përdorues, 3.5 herë më shumë se CS, me probabilitet të pranueshëm të dështimit. 
 
 ---
 
@@ -190,6 +190,7 @@ Krahasim teorik vs Monte Carlo vs normal approximation për N=[35,50,100], p=0.1
 - Për **p>0.2** ose N të mëdha, rreziku rritet ndjeshëm.  
 - Verifikimi tregon se modeli binomial është i besueshëm (devijim <1% nga Monte Carlo).  
 - Analizat vizuale (PMF, tail vs N, heatmap) ilustrojnë kufijtë dhe avantazhet e secilës paradigmë.  
+
 
 
 
